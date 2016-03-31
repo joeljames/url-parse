@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    echo "Runs the web process."
+    exit
+fi
+
+export GUNICORN_WORKERS=${GUNICORN_WORKERS:-4}
+
+gunicorn app:app \
+    --workers "$GUNICORN_WORKERS" \
+    --bind=0.0.0.0:8000 \
+    --log-level=debug \
+    --log-file=- \
+    --access-logfile=- \
+    --error-logfile=-

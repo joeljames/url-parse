@@ -1,0 +1,5 @@
+# Base Libraries
+flask==0.10.1
+
+# Server
+gunicorn==19.1.1
