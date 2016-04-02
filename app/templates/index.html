@@ -9,7 +9,7 @@
           <div class="form-group">
             <label for="URLInput">{{ form.url.label }}</label>
             <input type="text" name="url" class="form-control" id="URLInput" placeholder="URL">
-            <span id="helpBlock" class="help-block">The URL whoes HTML page has to be fetched</span>
+            <span id="helpBlock" class="help-block">Enter the URL of a page to fetch</span>
           </div>
           {% if form.url.errors %}
             <ul>
@@ -25,6 +25,7 @@
         <div class="col-md-8">
           <br>
           {% if parser %}
+            <h4>HTML Source</h>
             <pre>{{ parser.data }}</pre>
           {% endif %}
         </div>

@@ -30,7 +30,7 @@ class HtmlParser(HTMLParser):
         return self._data
 
     def reset(self):
-        self._raw_source = None
+        self._data = None
         self.summary_dict = defaultdict(int)
         super().reset()
 

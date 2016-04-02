@@ -40,3 +40,18 @@ The application is setup to run locally with a docker container.
     ```
 
 4. Check the server is up and running by hitting the url `http://url-parse.docker/`.
+
+
+# Running Lints
+
+1. Install flake8
+
+    ``` bash
+    $ sudo pip install flake8
+    ```
+
+2. Run Lint
+
+    ``` bash
+    $ make lint
+    ```
