@@ -36,6 +36,3 @@ class HtmlParser(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         self.summary_dict[tag] += 1
-
-    def handle_endtag(self, tag):
-        self.summary_dict[tag] += 1

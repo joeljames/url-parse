@@ -1,6 +1,6 @@
 The application is setup to run locally with a docker container.
 
-# Set up Docker Environment(Mac Environment)
+# Set up Docker Environment (Mac)
 1. Install [Dinghy](https://github.com/codekitchen/dinghy)
 
 2. Install [docker toolbox](https://www.docker.com/products/docker-toolbox)

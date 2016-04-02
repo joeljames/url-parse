@@ -3,57 +3,74 @@
   <div class="container">
     <h3>Welcome to HTML Parser</h3>
 
-      <form action="{{ url_for('url_parsing.url_parsing_detail') }}" method="post" class="form-inline">
-        <div>
-          <br>
-          <div class="form-group">
-            <label for="URLInput">{{ form.url.label }}</label>
-            <input type="text" name="url" class="form-control" id="URLInput" placeholder="URL">
-            <span id="helpBlock" class="help-block">Enter the URL of a page to fetch</span>
-          </div>
-          {% if form.url.errors %}
-            <ul>
-              <li><p class="bg-danger">{{ form.url.errors[0] }}</p></li>
-            </ul>
-          {% endif %}
-          {{ form.csrf_token }}
+    <form action="{{ url_for('url_parsing.url_parsing_detail') }}" method="post" class="form-inline">
+      <div>
+        <br>
+        <div class="form-group">
+          <label for="URLInput">{{ form.url.label }}</label>
+          <input type="text" name="url" class="form-control" id="URLInput" placeholder="URL">
+          <span id="helpBlock" class="help-block">Enter the URL of a page to fetch</span>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-
-      <div class="row">
-        <div class="col-md-8">
-          <br>
-          {% if parser %}
-            <h4>HTML Source</h>
-            <pre>{{ parser.data }}</pre>
-          {% endif %}
-        </div>
-        <div class="col-md-4">
-          {% if parser %}
-            <h4>Summary</h>
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Tag</th>
-                  <th>Count</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for tag, count in parser.summary.items() %}
-                  <tr>
-                    <td>
-                      {{ tag }}
-                    </td>
-                    <td>
-                      {{ count }}
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          {% endif %}
-        </div>
+        {% if form.url.errors %}
+          <ul>
+            <li><p class="bg-danger">{{ form.url.errors[0] }}</p></li>
+          </ul>
+        {% endif %}
+        {{ form.csrf_token }}
       </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="row">
+      <div class="col-md-8">
+        <br>
+        {% if parser %}
+          <h4>HTML Source</h>
+          <pre id="sourceData">{{ parser.data }}</pre>
+        {% endif %}
+      </div>
+      <div class="col-md-4">
+        {% if parser %}
+          <h4>Summary</h>
+          <table class="table table-hover" id="summaryTable">
+            <thead>
+              <tr>
+                <th>Tag</th>
+                <th>Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for tag, count in parser.summary.items() %}
+                <tr>
+                  <td>
+                    {{ tag }}
+                  </td>
+                  <td>
+                    {{ count }}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
+      </div>
+    </div>
   </div>
+
+  <script>
+    function RegisterTableClickEvent() {
+      $("#summaryTable").on("click", "td", function() {
+        var value = $.trim($(this).text());
+        var sourceDataElement = document.getElementById("sourceData");
+        var sourceDataContent = document.getElementById("sourceData").innerHTML;
+        matches = sourceDataContent.match(RegExp("&lt;(" + value + ")", "g"));
+        sourceDataElement.innerHTML =  sourceDataContent.replace(RegExp("&lt;\/?(" + value + ")", "g"), '<strong><mark>$1</mark></strong>');
+      });
+    }
+
+    $(document).ready(function(){
+      RegisterTableClickEvent();
+    });
+  </script>
+
 {% endblock content %}
