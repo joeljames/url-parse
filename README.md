@@ -47,7 +47,7 @@ The application is setup to run locally with a docker container.
 1. Install flake8
 
     ``` bash
-    $ sudo pip install flake8
+    $ sudo pip3 install flake8
     ```
 
 2. Run Lint
