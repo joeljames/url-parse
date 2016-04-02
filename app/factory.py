@@ -1,6 +1,7 @@
 from flask import Flask
 
 from app.url_parsing.urls import mod_url_parsing
+from app.services import configure_services
 
 
 __all__ = [
@@ -16,6 +17,7 @@ class AppFactory(object):
         )
         # Load config
         self.app.config.from_object('config')
+        configure_services(self.app)
         self.configure_views()
 
     def configure_views(self):

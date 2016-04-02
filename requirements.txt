@@ -1,5 +1,6 @@
 # Base Libraries
 flask==0.10.1
+flask-wtf==0.9.5
 
 # Server
 gunicorn==19.1.1

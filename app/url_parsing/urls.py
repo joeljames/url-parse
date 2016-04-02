@@ -12,12 +12,12 @@ __all__ = [
 
 
 mod_url_parsing = Blueprint(
-    'url-parsing',
+    'url_parsing',
     __name__,
     url_prefix='/'
 )
 
 mod_url_parsing.add_url_rule(
     '/',
-    view_func=UrlParsingView.as_view('url-parse-detail')
+    view_func=UrlParsingView.as_view('url_parsing_detail')
 )
