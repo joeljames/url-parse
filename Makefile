@@ -4,6 +4,7 @@ help:
 
 	@echo "  copy_env    Copies the 'env.example.ini' file to 'env.ini'."
 	@echo "  lint        Lint all project files."
+	@echo "  test        Runs unit tests and coverage."
 
 .PHONY: copy_env
 copy_env:
@@ -12,3 +13,7 @@ copy_env:
 .PHONY: lint
 lint:
 	@bin/lint
+
+.PHONY: test
+test:
+	@bin/test

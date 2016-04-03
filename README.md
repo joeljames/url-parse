@@ -1,6 +1,6 @@
 The application is setup to run locally with a docker container.
 
-# Set up Docker Environment (Mac)
+## Set up Docker Environment (Mac)
 1. Install [Dinghy](https://github.com/codekitchen/dinghy)
 
 2. Install [docker toolbox](https://www.docker.com/products/docker-toolbox)
@@ -19,7 +19,7 @@ The application is setup to run locally with a docker container.
     $ dinghy up
     ```
 
-# Getting Started
+## Getting Started
 
 1. Setup environment
 
@@ -41,8 +41,15 @@ The application is setup to run locally with a docker container.
 
 4. Check the server is up and running by hitting the url `http://url-parse.docker/`.
 
+## Running Tests
 
-# Running Lints
+1. Install flake8
+
+    ``` bash
+    $ docker-compose run web make test
+    ```
+
+## Running Lints
 
 1. Install flake8
 
