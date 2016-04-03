@@ -19,10 +19,11 @@ class UrlValidator:
         self.message = message
 
     def __call__(self, form, field):
+        code = 0
         try:
             code = urlopen(field.data).getcode()
         except URLError:
-            code = 0
+            pass
         finally:
             if code != 200:
                 raise ValidationError(self.message)
