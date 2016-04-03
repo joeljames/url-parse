@@ -2,6 +2,7 @@ from flask import Flask
 
 from app.url_parsing.urls import mod_url_parsing
 from app.services import configure_services
+from app.errors import add_error_handlers
 
 
 __all__ = [
@@ -22,3 +23,4 @@ class AppFactory(object):
 
     def configure_views(self):
         self.app.register_blueprint(mod_url_parsing)
+        add_error_handlers(self.app)
