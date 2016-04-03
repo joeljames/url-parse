@@ -41,6 +41,14 @@ The application is setup to run locally with a docker container.
 
 4. Check the server is up and running by hitting the url `http://url-parse.docker/`.
 
+## Link Git Hooks
+
+1. Add pre-commit hooks
+
+    ``` bash
+    $ make link_hooks
+    ```
+
 ## Running Tests
 
 1. Install flake8
