@@ -63,8 +63,10 @@
         var value = $.trim($(this).text());
         var sourceDataElement = document.getElementById("sourceData");
         var sourceDataContent = document.getElementById("sourceData").innerHTML;
-        matches = sourceDataContent.match(RegExp("&lt;(" + value + ")", "g"));
-        sourceDataElement.innerHTML =  sourceDataContent.replace(RegExp("&lt;\/?(" + value + ")", "g"), '<strong><mark>$1</mark></strong>');
+        sourceDataElement.innerHTML =  sourceDataContent.replace(
+          RegExp("&lt;\/?(" + value + ")", "g"),
+          "&lt;<strong><mark>$1</mark></strong>"
+        );
       });
     }
 
