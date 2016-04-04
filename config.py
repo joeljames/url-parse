@@ -23,6 +23,9 @@ LOGGING_LEVEL = os.environ.get('LOGGING_LEVEL', 'DEBUG')
 CSRF_SESSION_KEY = os.environ.get('CSRF_SESSION_KEY', 'default_secret_csrf')
 SECRET_KEY = os.environ.get('SECRET_KEY', 'default_secret_key')
 
+# Static files
+STATIC_FOLDER = os.environ.get('STATIC_FOLDER', 'assets')
+STATIC_URL_PATH = os.environ.get('STATIC_FOLDER', '')
 
 # ----------------------------------------------------------------------------
 # Database
