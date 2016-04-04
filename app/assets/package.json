@@ -1,0 +1,20 @@
+{
+    "name": "url-parse",
+    "version": "0.0.0",
+    "description": "Builds assets for the URL Parse Application",
+    "author": "Joel James <joeljames1985@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "htmlparser2":"3.9.0"
+    },
+    "repository": "",
+    "devDependencies": {
+        "browserify": "^8.0.3",
+        "watchify": "^2.2.1"
+    },
+
+    "scripts": {
+        "build-js": "browserify js/summary_table.js > js/summary_table_bundle.js",
+        "watch-js": "watchify js/summary_table.js -o js/summary_table_bundle.js"
+    }
+}

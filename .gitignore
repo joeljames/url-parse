@@ -63,3 +63,5 @@ target/
 
 # Project
 api.txt
+
+app/assets/node_modules/
