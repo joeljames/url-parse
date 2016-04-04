@@ -14,8 +14,8 @@ class UrlParseRequestRepository:
     Repository interface for retrieving and managing url parse requests.
     """
 
-    def __init__(self):
-        self.query = UrlParseRequest.query
+    def __init__(self, query=None):
+        self.query = query or UrlParseRequest.query
 
     def get_or_create(self, url):
         """
@@ -38,12 +38,14 @@ class UrlParseRequestRepository:
         """
         return self.query.filter_by(url=url).first()
 
-    def get_list(self, limit=None):
+    def get_list(self, url=None, limit=None):
         """
         Retrives the url parse request objects from the db,
         based on the arguments passes in to filter the collection.
         """
         query = self.query.order_by(UrlParseRequest.count.desc())
+        if url:
+            query = query.filter_by(url=url)
         if limit:
             query = query.limit(limit)
         return query.all()
@@ -66,6 +68,7 @@ class UrlParseRequestRepository:
         if not created:
             obj.count += 1
         db.session.commit()
+        return obj
 
     def delete(self, url):
         """
