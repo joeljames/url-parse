@@ -22,3 +22,19 @@ LOGGING_LEVEL = os.environ.get('LOGGING_LEVEL', 'DEBUG')
 # Secret keys.
 CSRF_SESSION_KEY = os.environ.get('CSRF_SESSION_KEY', 'default_secret_csrf')
 SECRET_KEY = os.environ.get('SECRET_KEY', 'default_secret_key')
+
+
+# ----------------------------------------------------------------------------
+# Database
+# ----------------------------------------------------------------------------
+DATABASE_URL = os.environ.get(
+    'DATABASE_URL',
+    'postgres://postgres:postgres@db:5432/'
+)
+
+SQLALCHEMY_DATABASE_URI = DATABASE_URL
+
+SQLALCHEMY_TRACK_MODIFICATIONS = os.environ.get(
+    'SQLALCHEMY_TRACK_MODIFICATIONS',
+    'False'
+) == 'True'

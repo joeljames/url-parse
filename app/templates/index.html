@@ -3,6 +3,34 @@
   <div class="container">
     <h3>Welcome to HTML Parser</h3>
 
+    <div class="row">
+      <div class="col-md-8">
+        {% if url_parse_requests %}
+          <center><h4>Request History (Top 5 requested URL)</h></center>
+          <table class="table table-striped" id="requestHistory">
+            <thead>
+              <tr>
+                <th>URL</th>
+                <th>Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for url_parse_request in url_parse_requests %}
+                <tr>
+                  <td>
+                    {{ url_parse_request.url }}
+                  </td>
+                  <td>
+                    {{ url_parse_request.count }}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
+      </div>
+    </div>
+
     <form action="{{ url_for('url_parsing.url_parsing_detail') }}" method="post" class="form-inline">
       <div>
         <br>

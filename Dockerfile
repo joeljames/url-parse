@@ -16,9 +16,10 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN chmod 4755 /usr/bin/sudo
 ENV HOME /home/app
 
-# Python3 Tools
+# Python3 Tools and Postgres Tools
 RUN apt-get update && \
     apt-get install -y python3-pip python3-dev python3-software-properties && \
+    apt-get install -y libpq-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 EXPOSE 8000

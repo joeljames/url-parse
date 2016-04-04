@@ -1,17 +1,16 @@
 from nose.tools import assert_equal, assert_true
 from mock import patch, DEFAULT, Mock
 
-from app import AppFactory
+from app.factory import app_factory
 
 
 class TestUrlParsingView:
 
     def setUp(self):
-        factory = AppFactory()
-        factory.app.config['TESTING'] = True
-        factory.app.config['CSRF_ENABLED'] = False
-        factory.app.config['WTF_CSRF_ENABLED'] = False
-        self.app = factory.app
+        app_factory.app.config['TESTING'] = True
+        app_factory.app.config['CSRF_ENABLED'] = False
+        app_factory.app.config['WTF_CSRF_ENABLED'] = False
+        self.app = app_factory.app
         self.test_client = self.app.test_client()
 
     def test_get(self):

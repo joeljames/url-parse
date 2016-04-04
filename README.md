@@ -33,13 +33,19 @@ The application is setup to run locally with a docker container.
     $ docker-compose build
     ```
 
-3. Start the server:
+3. Build the database schema:
+
+    ``` bash
+    $ docker-compose run web make init_db
+    ```
+
+4. Start the server:
 
     ``` bash
     $ docker-compose up
     ```
 
-4. Check the server is up and running by hitting the url `http://url-parse.docker/`.
+5. Check the server is up and running by hitting the url `http://url-parse.docker/`.
 
 ## Link Git Hooks
 

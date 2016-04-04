@@ -2,6 +2,11 @@
 flask==0.10.1
 flask-wtf==0.9.5
 six==1.10.0
+Flask-SQLAlchemy==2.1
+invoke==0.9.0
+
+# Database Adapters
+psycopg2==2.5.4
 
 # Server
 gunicorn==19.1.1

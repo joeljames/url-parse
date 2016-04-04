@@ -1,3 +1,3 @@
-from app.factory import AppFactory
+from app.factory import app_factory
 
-app = AppFactory().app
+app = app_factory.app

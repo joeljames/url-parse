@@ -6,6 +6,7 @@ help:
 	@echo "  link_hooks      Installs all git hooks stored in 'bin/hooks'."
 	@echo "  lint            Lint all project files."
 	@echo "  test            Runs unit tests and coverage."
+	@echo "  init_db         Rebuilds the database."
 
 .PHONY: copy_env
 copy_env:
@@ -22,3 +23,7 @@ lint:
 .PHONY: test
 test:
 	@bin/test
+
+.PHONY: init_db
+init_db:
+	@bin/init_db
