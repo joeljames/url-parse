@@ -3,12 +3,12 @@ from __future__ import absolute_import
 from flask.views import MethodView
 from flask import (
     render_template,
-    request,
-    current_app
+    request
 )
 
 from app.url_parsing.forms import UrlRequestForm
 from app.url_parsing.parsers import HtmlParser
+from app.shared.services import get_logger
 
 
 __all__ = [
@@ -19,10 +19,11 @@ __all__ = [
 class UrlParsingView(MethodView):
 
     def __init__(self,
+                 logger=None,
                  template_name='index.html'):
         super().__init__()
         self.template_name = template_name
-        self.logger = current_app.logger
+        self.logger = logger or get_logger('views')
 
     def get(self):
         form = UrlRequestForm(request.form)

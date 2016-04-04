@@ -16,6 +16,8 @@ LOCAL = os.environ.get('LOCAL', 'True') == 'True'
 # Port at which the app would be listening.
 PORT = os.environ.get('PORT', 8000)
 
+# Sets the default logging level for the application
+LOGGING_LEVEL = os.environ.get('LOGGING_LEVEL', 'DEBUG')
 
 # Secret keys.
 CSRF_SESSION_KEY = os.environ.get('CSRF_SESSION_KEY', 'default_secret_csrf')
