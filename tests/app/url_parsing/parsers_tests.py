@@ -1,4 +1,8 @@
-from nose.tools import assert_equal, assert_is_none
+from nose.tools import (
+    assert_equal,
+    assert_is_none,
+    assert_true
+)
 from mock import patch, DEFAULT
 
 from collections import defaultdict
@@ -25,7 +29,16 @@ class TestHtmlParser:
         force_str.return_value = '<html></html>'
         p = parsers.HtmlParser()
         p.feed(self.url)
-        assert_equal(p.summary['html'], 1)
+        assert_equal(p.summary['html'], 2)
+
+    @patch.multiple('app.url_parsing.parsers',
+                    urlopen=DEFAULT,
+                    force_str=DEFAULT)
+    def test_is_successfull(self, urlopen, force_str):
+        force_str.return_value = '<html></html>'
+        p = parsers.HtmlParser()
+        p.feed(self.url)
+        assert_true(p.is_successfull)
 
     @patch.multiple('app.url_parsing.parsers',
                     urlopen=DEFAULT,
