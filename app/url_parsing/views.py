@@ -10,6 +10,7 @@ from app.url_parsing.forms import UrlRequestForm
 from app.url_parsing.parsers import HtmlParser
 from app.shared.services import get_logger
 from app.url_parsing.repositories import UrlParseRequestRepository
+from app.shared.mixins import RepositoryMixin
 
 
 __all__ = [
@@ -17,14 +18,15 @@ __all__ = [
 ]
 
 
-class UrlParsingView(MethodView):
+class UrlParsingView(MethodView,
+                     RepositoryMixin):
+
+    repository_class = UrlParseRequestRepository
 
     def __init__(self,
                  logger=None,
-                 repository=None,
                  template_name='index.html'):
         super().__init__()
-        self.repository = repository or UrlParseRequestRepository()
         self.template_name = template_name
         self.logger = logger or get_logger('views')
 
