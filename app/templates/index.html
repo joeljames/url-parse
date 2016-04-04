@@ -31,23 +31,30 @@
       </div>
     </div>
 
-    <form action="{{ url_for('url_parsing.url_parsing_detail') }}" method="post" class="form-inline">
-      <div>
-        <br>
-        <div class="form-group">
-          <label for="URLInput">{{ form.url.label }}</label>
-          <input type="text" name="url" class="form-control" id="URLInput" placeholder="URL">
-          <span id="helpBlock" class="help-block">Enter the URL of a page to fetch</span>
-        </div>
-        {% if form.url.errors %}
-          <ul>
-            <li><p class="bg-danger">{{ form.url.errors[0] }}</p></li>
-          </ul>
-        {% endif %}
-        {{ form.csrf_token }}
+    <h4>Parse URL</h4>
+    <div class="row">
+      <div class="col-md-8">
+        <form action="{{ url_for('url_parsing.url_parsing_detail') }}" method="post" class="form-inline">
+          <div>
+            <br>
+            <div class="form-group">
+              <label for="URLInput">{{ form.url.label }}</label>
+              <input type="text" name="url" class="form-control" id="URLInput" placeholder="URL">
+              <span id="helpBlock" class="help-block">Enter the URL of a page to fetch</span>
+            </div>
+            {% if form.url.errors %}
+              <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                {{ form.url.errors[0] }}
+              </div>
+            {% endif %}
+            {{ form.csrf_token }}
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 
     <div class="row">
       <div class="col-md-8">
@@ -57,7 +64,11 @@
           {% if parser.is_successfull %}
             <pre id="sourceData">{{ parser.data }}</pre>
           {% else %}
-            <p class="bg-danger"> Sorry failed to fetch and parse the URL source. Please try a different URL.</p>
+            <div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              Sorry failed to fetch and parse the URL source. Please try a different URL.
+            </div>
           {% endif %}
         {% endif %}
       </div>

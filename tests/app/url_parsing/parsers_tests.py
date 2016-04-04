@@ -29,7 +29,7 @@ class TestHtmlParser:
         force_str.return_value = '<html></html>'
         p = parsers.HtmlParser()
         p.feed(self.url)
-        assert_equal(p.summary['html'], 2)
+        assert_equal(p.summary['html'], 1)
 
     @patch.multiple('app.url_parsing.parsers',
                     urlopen=DEFAULT,

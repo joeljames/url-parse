@@ -71,4 +71,4 @@ class TestUrlParsingView:
         assert_false(HtmlParser.called)
         repository_class().get_list\
             .assert_called_with(limit=5)
-        assert_true('bg-danger' in str(result.data))
+        assert_true('alert alert-danger' in str(result.data))

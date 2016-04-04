@@ -84,10 +84,3 @@ class HtmlParser(HTMLParser):
         Increments the cont of the tag on the summary_dict.
         """
         self.summary_dict[tag] += 1
-
-    def handle_endtag(self, tag):
-        """
-        Handles the end tag.
-        Increments the cont of the tag on the summary_dict.
-        """
-        self.summary_dict[tag] += 1
