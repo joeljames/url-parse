@@ -11,6 +11,10 @@ __all__ = [
 
 
 class UrlRequestForm(Form):
+    """
+    The URL parse request form.
+    Also, takes care of the validations on the URL field.
+    """
 
     url = URLField(
         'URL',

@@ -10,6 +10,13 @@ __all__ = [
 
 
 def get_logger(name):
+    """
+    Configures the logger and set the logging level
+    on the logger based on the config var `LOGGING_LEVEL`.
+    You can change the loffing level by updating the
+    env variable `LOGGING_LEVEL`.
+    """
+
     logger = logging.getLogger(name)
     if not logger.handlers:
         out = logging.StreamHandler(sys.stdout)

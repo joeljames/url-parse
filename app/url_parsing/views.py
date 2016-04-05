@@ -14,12 +14,15 @@ from app.shared.mixins import RepositoryMixin
 
 
 __all__ = [
-    'UrlParsingView'
+    'UrlParsingView',
 ]
 
 
 class UrlParsingView(MethodView,
                      RepositoryMixin):
+    """
+    The URL parsing view.
+    """
 
     repository_class = UrlParseRequestRepository
 
