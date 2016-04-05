@@ -1,7 +1,6 @@
 from flask import Flask
 
 from app.url_parsing.urls import mod_url_parsing
-from app.services import configure_services
 from app.errors import add_error_handlers
 from app.database import db
 from app.shared.utils import get_config
@@ -14,6 +13,11 @@ __all__ = [
 
 
 class AppFactory(object):
+    """
+    It is called on the initial application start.
+    The factory loads all the configuration defined in the `config.py`
+    It also configures the db settings and views.
+    """
 
     def __init__(self):
         self.app = Flask(
@@ -23,7 +27,6 @@ class AppFactory(object):
         )
         # Load config
         self.app.config.from_object('config')
-        configure_services(self.app)
         self.configure_db()
         self.configure_views()
 

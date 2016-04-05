@@ -8,6 +8,10 @@ __all__ = [
 
 
 class UrlParseRequest(db.Model):
+    """
+    The database model for `url_parse_request` model.
+    """
+
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String, unique=True)
     count = db.Column(db.Integer, nullable=False)

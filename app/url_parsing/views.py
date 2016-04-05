@@ -22,6 +22,7 @@ class UrlParsingView(MethodView,
                      RepositoryMixin):
     """
     The URL parsing view.
+    The routing for this view is defined in `url.py`.
     """
 
     repository_class = UrlParseRequestRepository
@@ -34,6 +35,11 @@ class UrlParsingView(MethodView,
         self.logger = logger or get_logger('views')
 
     def get(self):
+        """
+        Handles the GET request.
+        Renders the from and URL parse request history.
+        The request history is limited to top 5 most pasred URLs
+        """
         form = UrlRequestForm(request.form)
         url_parse_requests = self.repository.get_list(limit=5)
         return render_template(
@@ -43,6 +49,14 @@ class UrlParsingView(MethodView,
         )
 
     def post(self):
+        """
+        Handles the POST when a user fills in the URLRequestForm
+        and hits submit.
+        If the form is valid ie: a valid URL is submitted, then the
+        requested url is sent to the `HtmlParser` which parses and
+        returns the summary (tag count),
+        It also logs any from error if the user submits an invalid request.
+        """
         parser = None
         form = UrlRequestForm(request.form)
         if form.validate_on_submit():
