@@ -21,13 +21,13 @@ function getRandomColor() {
 function RegisterTableClickEvent() {
   // usedColor arry keeps a track of previously used color.
   usedColor = new Array();
-    $("#summaryTable").on("click", "td", function() {
-      var value = $.trim($(this).text());
-      var sourceDataElement = document.getElementById("sourceData");
-      var sourceDataContent = document.getElementById("sourceData").innerHTML;
-      var color = getRandomColor();
-      // Regex to capture a tag
-      var tagRegex = RegExp("&lt;\/?(" + value + ")", "g");
+  $("#summaryTable").on("click", "td", function() {
+    var value = $.trim($(this).text());
+    var sourceDataElement = document.getElementById("sourceData");
+    var sourceDataContent = document.getElementById("sourceData").innerHTML;
+    var color = getRandomColor();
+    // Regex to capture a tag
+    var tagRegex = RegExp("&lt;\/?(" + value + ")", "g");
     sourceDataElement.innerHTML =  sourceDataContent.replace(
       tagRegex,
       '&lt;<strong><span style="background-color:' + color + '">$1</span></strong>'
