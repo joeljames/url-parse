@@ -23,8 +23,8 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ## Install Node/Npm
-ENV NODE_VERSION 0.11.14
-ENV NPM_VERSION 2.1.6
+ENV NODE_VERSION 7.0.0
+ENV NPM_VERSION 3.10.8
 RUN wget -q "http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" \
   && tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 \
   && rm "node-v$NODE_VERSION-linux-x64.tar.gz" \
