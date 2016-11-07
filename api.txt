@@ -1,0 +1,21 @@
+########
+## Query the repository
+########
+from app import app
+from app.url_parsing.repositories import *
+
+with app.app_context():
+    r = UrlParseRequestRepository()
+    r.get_list()
+
+
+
+########
+## Query the model
+########
+from app import app
+from app.url_parsing.models import *
+
+with app.app_context():
+    query = UrlParseRequest.query
+    query.all()

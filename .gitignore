@@ -61,7 +61,4 @@ target/
 #Ipython Notebook
 .ipynb_checkpoints
 
-# Project
-api.txt
-
 app/assets/node_modules/
