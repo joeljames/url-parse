@@ -4,23 +4,15 @@ The application is setup to run locally with a docker container.
 I use Mac for local development. Below are the instructions to set up
 Docker on Mac
 
-1. Install [Dinghy](https://github.com/codekitchen/dinghy)
+1. For Mac I recommend installing Docker Desktop for Mac. See instructions [here](https://docs.docker.com/docker-for-mac/). Check versions
+```bash
+$ docker --version
 
-2. Install [docker toolbox](https://www.docker.com/products/docker-toolbox)
+$ docker-compose --version
 
-3. Install [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
+$ docker-machine --version
+```
 
-4. Creat the docker-machine VM. Make sure to alocate enough resources to the VM.
-
-    ``` bash
-    $ dinghy create --disk=60000 --provider=virtualbox
-    ```
-
-5. Start the Docker VM and services
-
-    ``` bash
-    $ dinghy up
-    ```
 
 ## Getting Started
 This app is set up to run within a Docker Container.
